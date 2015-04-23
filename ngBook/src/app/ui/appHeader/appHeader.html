@@ -1,0 +1,23 @@
+﻿<div class="app-header">
+    <div>
+        <div class="left">
+            <h1>
+                ngBook
+            </h1>
+
+            <ul data-ng-if="isLoggedIn()">
+                <li>
+                    <a data-ng-href="#/toDo/list">To Do List</a>
+                </li>
+                <li>
+                    <a data-ng-href="#/toDo/create">Create To Do</a>
+                </li>
+            </ul>
+        </div>
+        <div data-ng-if="isLoggedIn()" class="right username">
+            <a href="#/login">{{ getUsername() }}</a>
+        </div>
+        <hamburger-button data-ng-if="isLoggedIn()" class="right"></hamburger-button>
+        <div class="clear"></div>
+    </div>
+</div>

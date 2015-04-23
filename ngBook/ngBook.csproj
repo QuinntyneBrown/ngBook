@@ -118,6 +118,7 @@
       <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.202250711\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>True</Private>
@@ -182,6 +183,9 @@
     <Content Include="package.json" />
     <Content Include="scripts\angular-animate.js" />
     <Content Include="scripts\angular-animate.min.js" />
+    <Content Include="scripts\angular-rc\angular-animate.js" />
+    <Content Include="scripts\angular-rc\angular.js" />
+    <Content Include="scripts\angular-rc\router.es5.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular-sanitize.js" />
@@ -210,10 +214,17 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\ngBook - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ngBook - Web Deploy.pubxml" />
     <None Include="scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="scripts\jquery-2.1.3.js" />
     <Content Include="scripts\jquery-2.1.3.min.js" />
     <Content Include="scripts\jquery-2.1.3.min.map" />
+    <Content Include="src\app\common\common.animations.less" />
+    <Content Include="src\app\common\common.less" />
+    <Content Include="src\app\security\directives\loginForm.less" />
+    <Content Include="src\app\ui\appBar\appBar.less" />
+    <Content Include="src\app\ui\appHeader\appHeader.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -232,28 +243,82 @@
     <Content Include="scripts\moment.js" />
     <Content Include="scripts\moment.min.js" />
     <Content Include="scripts\npm.js" />
+    <Content Include="src\app\security\directives\loginForm.html" />
+    <Content Include="src\app\ui\appBar\appBar.html" />
+    <Content Include="src\app\ui\appHeader\appHeader.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\AccountConfiguration.cs" />
+    <Compile Include="Migrations\BookConfiguration.cs" />
+    <Compile Include="Migrations\CollectionConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\FavoriteListConfiguration.cs" />
+    <Compile Include="Migrations\ProfileConfiguration.cs" />
+    <Compile Include="Migrations\RoleConfiguration.cs" />
+    <Compile Include="Migrations\UserConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\Api\v1\AccountController.cs" />
+    <Compile Include="Server\Api\v1\BookController.cs" />
+    <Compile Include="Server\Api\v1\CollectionController.cs" />
+    <Compile Include="Server\Api\v1\FavoriteListController.cs" />
+    <Compile Include="Server\Api\v1\ProfileController.cs" />
+    <Compile Include="Server\Api\v1\SecurityController.cs" />
+    <Compile Include="Server\Api\v1\UserManagementController.cs" />
+    <Compile Include="Server\Config\AppConfiguration.cs" />
+    <Compile Include="Server\Config\CryptoConfiguration.cs" />
+    <Compile Include="Server\Config\ExcelConfiguration.cs" />
+    <Compile Include="Server\Config\SecurityConfiguration.cs" />
+    <Compile Include="Server\Data\BookContext.cs" />
+    <Compile Include="Server\Data\Contracts\IRepository.cs" />
+    <Compile Include="Server\Data\Contracts\IUserRepository.cs" />
+    <Compile Include="Server\Data\EFRepository.cs" />
+    <Compile Include="Server\Data\UserRepository.cs" />
+    <Compile Include="Server\Dtos\RegistrationRequestDto.cs" />
+    <Compile Include="Server\Dtos\TokenDto.cs" />
+    <Compile Include="Server\Models\Account.cs" />
+    <Compile Include="Server\Models\Book.cs" />
+    <Compile Include="Server\Models\Collection.cs" />
+    <Compile Include="Server\Models\Entity.cs" />
+    <Compile Include="Server\Models\FavoriteList.cs" />
+    <Compile Include="Server\Models\Profile.cs" />
+    <Compile Include="Server\Models\Role.cs" />
+    <Compile Include="Server\Models\User.cs" />
+    <Compile Include="Server\OAuth2\JwtOptions.cs" />
+    <Compile Include="Server\OAuth2\JwtWriterFormat.cs" />
+    <Compile Include="Server\OAuth2\OAuthOptions.cs" />
+    <Compile Include="Server\OAuth2\OAuthProvider.cs" />
+    <Compile Include="Server\Services\Contracts\IEncryptionService.cs" />
+    <Compile Include="Server\Services\Contracts\IIdentityService.cs" />
+    <Compile Include="Server\Services\Contracts\ISecurityService.cs" />
+    <Compile Include="Server\Services\EncryptionService.cs" />
+    <Compile Include="Server\Services\IdentityService.cs" />
+    <Compile Include="Server\Services\SecurityService.cs" />
     <Compile Include="Server\StartUp\OwinStartUp.cs" />
+    <Compile Include="Server\StartUp\UnityConfig.cs" />
     <Compile Include="Server\StartUp\WebApiStartUp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Server\Api\" />
-    <Folder Include="Server\Data\Contracts\" />
-    <Folder Include="Server\Models\" />
-    <Folder Include="Server\Services\Contracts\" />
-    <Folder Include="src\app\collection\" />
-    <Folder Include="src\app\common\" />
-    <Folder Include="src\app\favoriteList\" />
-    <Folder Include="src\app\security\" />
-    <Folder Include="src\app\ui\" />
-    <Folder Include="src\app\userManagement\" />
+    <Folder Include="src\app\book\directives\" />
+    <Folder Include="src\app\book\services\" />
+    <Folder Include="src\app\book\views\" />
+    <Folder Include="src\app\collection\controllers\" />
+    <Folder Include="src\app\collection\directives\" />
+    <Folder Include="src\app\collection\services\" />
+    <Folder Include="src\app\collection\views\" />
+    <Folder Include="src\app\common\views\" />
+    <Folder Include="src\app\favoriteList\controllers\" />
+    <Folder Include="src\app\favoriteList\directives\" />
+    <Folder Include="src\app\favoriteList\services\" />
+    <Folder Include="src\app\favoriteList\views\" />
+    <Folder Include="src\app\security\views\" />
+    <Folder Include="src\app\ui\functions\" />
+    <Folder Include="src\app\userManagement\controllers\" />
+    <Folder Include="src\app\userManagement\directives\" />
+    <Folder Include="src\app\userManagement\views\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
@@ -264,7 +329,50 @@
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="src\app\authenticatedController.ts" />
     <TypeScriptCompile Include="src\app\book\book.module.ts" />
+    <TypeScriptCompile Include="src\app\book\controllers\bookAppController.ts" />
+    <TypeScriptCompile Include="src\app\collection\collection.module.ts" />
+    <TypeScriptCompile Include="src\app\common\common.d.ts" />
+    <TypeScriptCompile Include="src\app\common\common.module.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\bind.ts" />
+    <TypeScriptCompile Include="src\app\common\functions\fire.ts" />
+    <TypeScriptCompile Include="src\app\common\services\apiEndpointProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\featureComponentsMappingsProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\formEncode.ts" />
+    <TypeScriptCompile Include="src\app\common\services\historyService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\notificationService.ts" />
+    <TypeScriptCompile Include="src\app\common\services\requestCounter.ts" />
+    <TypeScriptCompile Include="src\app\common\services\routesProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\services\storage.ts" />
+    <TypeScriptCompile Include="src\app\dataService.ts" />
+    <TypeScriptCompile Include="src\app\entity.ts" />
+    <TypeScriptCompile Include="src\app\favoriteList\favoriteList.module.ts" />
+    <TypeScriptCompile Include="src\app\security\controllers\loginController.ts" />
+    <TypeScriptCompile Include="src\app\security\directives\loginForm.ts" />
+    <TypeScriptCompile Include="src\app\security\directives\loginFormController.ts" />
+    <TypeScriptCompile Include="src\app\security\security.d.ts" />
+    <TypeScriptCompile Include="src\app\security\security.module.ts" />
+    <TypeScriptCompile Include="src\app\security\services\authorizationInterceptor.ts" />
+    <TypeScriptCompile Include="src\app\security\services\currentUser.ts" />
+    <TypeScriptCompile Include="src\app\security\services\loginRedirectProvider.ts" />
+    <TypeScriptCompile Include="src\app\security\services\securityService.ts" />
+    <TypeScriptCompile Include="src\app\security\services\token.ts" />
+    <TypeScriptCompile Include="src\app\security\services\tokenExpiryDate.ts" />
+    <TypeScriptCompile Include="src\app\security\services\user.ts" />
+    <TypeScriptCompile Include="src\app\sessionStorageProperty.ts" />
+    <TypeScriptCompile Include="src\app\storage.ts" />
+    <TypeScriptCompile Include="src\app\ui\appBar\appBar.ts" />
+    <TypeScriptCompile Include="src\app\ui\appBar\appBarController.ts" />
+    <TypeScriptCompile Include="src\app\ui\appBar\appBarService.ts" />
+    <TypeScriptCompile Include="src\app\ui\appHeader\appHeader.ts" />
+    <TypeScriptCompile Include="src\app\ui\appHeader\appHeaderController.ts" />
+    <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
+    <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
+    <TypeScriptCompile Include="src\app\userManagement\services\account.ts" />
+    <TypeScriptCompile Include="src\app\userManagement\services\profile.ts" />
+    <TypeScriptCompile Include="src\app\userManagement\userManagement.d.ts" />
+    <TypeScriptCompile Include="src\app\userManagement\userManagement.module.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

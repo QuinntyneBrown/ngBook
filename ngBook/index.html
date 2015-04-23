@@ -1,22 +1,41 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-    <title>ngBook</title>
+    <title>books</title>
+    <meta charset="utf-8">
+    <base href="/">
+
+    <meta name="viewport"
+          content="width=device-width,
+              minimal-ui,
+              initial-scale=1,
+              maximum-scale=1,
+              user-scalable=0" />
+
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="app.less" rel="stylesheet" />
+
 </head>
 
-<body data-ng-app="app.book">
+<body data-ng-app="app.book" ng-strict-di data-ng-controller="bookAppController as app">
 
-    <app-header></app-header>
+    <work-spinner data-ng-if="app.$router.navigating"></work-spinner>
 
-    <div data-ng-view="">
+    <app-header is-logged-in="app.isLoggedIn()" get-username="app.getUsername()"></app-header>
 
+    <div ng-viewport class="main-content slide">
 
     </div>
 
-    <app-footer></app-footer>
-    <script src="scripts/angular.min.js"></script>
-    <script src="scripts/angular-route.min.js"></script>
+    <app-bar></app-bar>
+
+    <script src="scripts/jquery-2.1.3.js"></script>
+    <script src="scripts/angular-rc/angular.js"></script>
+    <script src="scripts/angular-rc/router.es5.js"></script>
+    <script src="scripts/angular-rc/angular-animate.js"></script>
+
     <script src="app.js"></script>
+
 </body>
 </html>
